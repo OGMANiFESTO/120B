@@ -17,15 +17,19 @@ int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
     DDRB = 0xFF; PORTB = 0x00;
 
-    unsigned char input0 = PINA;
-    unsigned char input1 = PINA;
+    unsigned char input0 = 0x00;
+    unsigned char input1 = 0x00;
    // unsigned char anum = 0x00;
     /* Insert your solution below */
     while (1) {
+	input0 = PINA&0x01;
+	input1 = PINA&0x02;
 	if((input0 == 0x01) && (input1 == 0x00)) {
 		PORTB = 0x01;
 	}
-	PORTB = 0x00; 
+	else {
+		PORTB= 0x00; 
+	}
     }
-    return 1;
+    return 0;
 }
